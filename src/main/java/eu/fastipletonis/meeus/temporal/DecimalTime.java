@@ -1,5 +1,5 @@
 /*
- *   Decimal Time routines..
+ *   Decimal Time routines.
  *
  *   Copyright (C) 2025 Marco Confalonieri <marco at marcoconfalonieri.it>
  *
@@ -28,6 +28,12 @@ import java.time.temporal.TemporalAccessor;
 
 /**
  * Conversion routines for the decimal time.
+ * <p>
+ * In astronomical aplications it is usual to use a decimal time with range
+ * [0, 1). This implementation uses the "civilan" time, with 0 set at midnight
+ * instead of noon. To get the astronomical time of the day, just add 0.5.
+ * <p>
+ * Please note that these routines ignore the timezone.
  */
 public class DecimalTime {
     private static final MathContext MC = new MathContext(20, RoundingMode.HALF_UP);
