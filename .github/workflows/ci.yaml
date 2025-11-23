@@ -16,3 +16,5 @@ jobs:
                   distribution: temurin
             - name: Build with Maven
               run: mvn verify
+            - name: Test the website build
+              run: mvn clean site

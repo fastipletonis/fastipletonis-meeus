@@ -21,3 +21,5 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 GITHUB_ACTOR: ${{ github.actor }}
+            - name: Update the website
+              run: mvn clean site site:stage scm-publish:publish-scm
