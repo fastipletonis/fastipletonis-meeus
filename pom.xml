@@ -7,7 +7,7 @@
   <artifactId>fastipletonis-meeus</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>meeus</name>
+  <name>Astronomical calculations library</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -44,7 +44,7 @@
 	</dependencyManagement>
 
   <build>
-      <plugins>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -76,6 +76,13 @@
                     implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter">
                     <theme>UNICODE</theme>
             </statelessTestsetInfoReporter>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <configuration>
+          <scmBranch>gh-pages</scmBranch>
         </configuration>
       </plugin>
     </plugins>
@@ -117,6 +124,10 @@
           <version>3.12.1</version>
         </plugin>
         <plugin>
+          <artifactId>maven-scm-publish-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.6.1</version>
         </plugin>
@@ -135,6 +146,10 @@
       <name>Snapshot packages for fastipletonis-meeus</name>
       <url>https://maven.pkg.github.com/fastipletonis/fastipletonis-meeus</url>
     </snapshotRepository>
+    <site>
+      <id>gh-pages</id>
+      <url>scm:git:git@github.com:fastipletonis/fastipletonis-meeus.git</url>
+    </site>
   </distributionManagement>
 
 </project>
