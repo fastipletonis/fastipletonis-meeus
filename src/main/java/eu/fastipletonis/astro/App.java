@@ -1,4 +1,4 @@
-package eu.fastipletonis.meeus;
+package eu.fastipletonis.astro;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,8 +7,8 @@ import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
-import eu.fastipletonis.meeus.temporal.Queries;
-import eu.fastipletonis.meeus.temporal.DecimalTime;
+import eu.fastipletonis.astro.temporal.DecimalTime;
+import eu.fastipletonis.astro.temporal.Queries;
 
 public class App {
     public static void main(String[] args) {
