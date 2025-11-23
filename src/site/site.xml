@@ -1,0 +1,22 @@
+<project name="Fasti Pletonis">
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>2.1.0</version>
+    </skin>
+    <bannerLeft>
+        <name>Fasti Pletonis</name>
+        <src>img/pletho-rgb-128x128.png</src>
+        <href>https://maven.apache.org/</href>
+    </bannerLeft>
+    <body>
+        <head />
+        <menu name="Overview">
+            <item name="Main" href="main.html" />
+        </menu>
+    </body>
+    <poweredBy>
+        <logo name="Maven" href="https://maven.apache.org/"
+            img="https://maven.apache.org/images/logos/maven-feather.png" />
+    </poweredBy>
+</project>

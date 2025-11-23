@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>eu.fastipletonis</groupId>
   <artifactId>fastipletonis-astro</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <name>Astronomical calculations library</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://fastipletonis.github.io/fastipletonis-astro/</url>
 
   <licenses>
-      <license>
-          <name>GNU General Public License v3</name>
-          <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
-      </license>
+    <license>
+      <name>GNU General Public License v3</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+    </license>
   </licenses>
 
   <properties>
@@ -23,25 +24,25 @@
     <maven.compiler.release>25</maven.compiler.release>
   </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-  
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>6.0.1</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>6.0.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <plugins>
@@ -62,20 +63,20 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <dependencies>
           <dependency>
-              <groupId>me.fabriciorby</groupId>
-              <artifactId>maven-surefire-junit5-tree-reporter</artifactId>
-              <version>1.4.0</version>
+            <groupId>me.fabriciorby</groupId>
+            <artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+            <version>1.4.0</version>
           </dependency>
         </dependencies>
         <configuration>
-            <reportFormat>plain</reportFormat>
-            <consoleOutputReporter>
-                <disable>true</disable>
-            </consoleOutputReporter>
-            <statelessTestsetInfoReporter
-                    implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter">
-                    <theme>UNICODE</theme>
-            </statelessTestsetInfoReporter>
+          <reportFormat>plain</reportFormat>
+          <consoleOutputReporter>
+            <disable>true</disable>
+          </consoleOutputReporter>
+          <statelessTestsetInfoReporter
+            implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter">
+            <theme>UNICODE</theme>
+          </statelessTestsetInfoReporter>
         </configuration>
       </plugin>
       <plugin>
@@ -83,17 +84,16 @@
         <artifactId>maven-scm-publish-plugin</artifactId>
         <configuration>
           <scmBranch>gh-pages</scmBranch>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
     </plugins>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.1</version>
@@ -118,14 +118,13 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>3.1.2</version>
         </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.12.1</version>
+          <version>3.21.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-scm-publish-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -138,17 +137,17 @@
   <distributionManagement>
     <repository>
       <id>github-release</id>
-      <name>Release packages for fastipletonis-meeus</name>
-      <url>https://maven.pkg.github.com/fastipletonis/fastipletonis-meeus</url>
+      <name>Release packages for fastipletonis-astro</name>
+      <url>https://maven.pkg.github.com/fastipletonis/fastipletonis-astro</url>
     </repository>
     <snapshotRepository>
       <id>github-snapshot</id>
-      <name>Snapshot packages for fastipletonis-meeus</name>
-      <url>https://maven.pkg.github.com/fastipletonis/fastipletonis-meeus</url>
+      <name>Snapshot packages for fastipletonis-astro</name>
+      <url>https://maven.pkg.github.com/fastipletonis/fastipletonis-astro</url>
     </snapshotRepository>
     <site>
       <id>gh-pages</id>
-      <url>scm:git:git@github.com:fastipletonis/fastipletonis-meeus.git</url>
+      <url>scm:git:git@github.com:fastipletonis/fastipletonis-astro.git</url>
     </site>
   </distributionManagement>
 
