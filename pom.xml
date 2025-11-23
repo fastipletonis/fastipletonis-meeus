@@ -11,6 +11,13 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
+  <licenses>
+      <license>
+          <name>GNU General Public License v3</name>
+          <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+      </license>
+  </licenses>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>25</maven.compiler.release>
