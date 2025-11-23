@@ -21,6 +21,7 @@ package eu.fastipletonis.meeus.temporal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -77,6 +78,19 @@ public class DecimalTimeTest {
         final LocalTime expected = LocalTime.parse(time);
         final BigDecimal input = new BigDecimal(decimalTime);
         final LocalTime actual = DecimalTime.toLocalTime(input);
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource(useHeadersInDisplayName = true, textBlock ="""
+        EXPECTED,               INPUT
+         1957-10-04T19:26:24,   1957-10-04.81
+         0333-01-27T12:00:00,   333-1-27.5
+        -0123-12-31T00:00:00,   -123-12-31.0
+    """)
+    void testParseDateTime(String e, String input) {
+        final LocalDateTime expected = LocalDateTime.parse(e);
+        final LocalDateTime actual = DecimalTime.parseDateTime(input);
         assertEquals(expected, actual);
     }
 }
