@@ -25,13 +25,16 @@ import java.time.temporal.TemporalQuery;
  * Temporal queries used for retrieving time.
  */
 public class Queries {
-
-    // Prevent instantiation
+    // Private constructor to prevent instantiation
     private Queries() {}
 
     /**
      * Query for returning the Astronomical Julian Day as a double. Returns
      * null if the temporal object does not support Julian Days.
+     * <p>
+     * More information about the fields that must be supportd by the
+     * TemporalAccessor is available in the documenttion for
+     * {@link JulianDayHelper#isSupported(java.time.temporal.TemporalAccessor)}.
      */
     public static final TemporalQuery<Double> JULIAN_DAY = (temporal) -> {
         if (JulianDayHelper.isSupported(temporal)) {
@@ -43,6 +46,10 @@ public class Queries {
      * Query for returning the Astronomical Julian Day as a high-precision
      * BigDecimal. Returns null if the temporal object does not support Julian
      * Days.
+     * <p>
+     * More information about the fields that must be supportd by the
+     * TemporalAccessor is available in the documenttion for
+     * {@link JulianDayHelper#isSupported(java.time.temporal.TemporalAccessor)}.
      */
     public static final TemporalQuery<BigDecimal> HP_JULIAN_DAY = (temporal) -> {
         if (JulianDayHelper.isSupported(temporal)) {

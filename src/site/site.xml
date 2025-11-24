@@ -6,17 +6,18 @@
     </skin>
     <bannerLeft>
         <name>Fasti Pletonis</name>
-        <src>img/pletho-rgb-128x128.png</src>
-        <href>https://maven.apache.org/</href>
+        <src>images/pletho-rgb-128x128.png</src>
+        <href>https://github.io/fastipletonis/</href>
     </bannerLeft>
     <body>
         <head />
-        <menu name="Overview">
-            <item name="Main" href="main.html" />
+        <menu name="General information">
+            <item name="Home" href="index.html" />
+        </menu>
+        <menu name="API usage">
+            <item name="Temporal" href="temporal.html" />
+            <item />
+            <item name="API reference" href="apidocs/index.html" />
         </menu>
     </body>
-    <poweredBy>
-        <logo name="Maven" href="https://maven.apache.org/"
-            img="https://maven.apache.org/images/logos/maven-feather.png" />
-    </poweredBy>
 </project>

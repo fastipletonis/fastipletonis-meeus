@@ -36,6 +36,9 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.FieldSource;
 
+/**
+ * Test suite for JulianDayHelper.
+ */
 public class JulianDayHelperTest {
     static final Collection<Arguments> isSupportedArgs = Arrays.asList(
         arguments(true, LocalDateTime.now()),
@@ -44,6 +47,11 @@ public class JulianDayHelperTest {
         arguments(false, LocalTime.now()),
         arguments(false, Instant.now())
     );
+
+    /**
+     * Constructor.
+     */
+    JulianDayHelperTest() {}
 
     @ParameterizedTest
     @CsvSource(useHeadersInDisplayName = true, textBlock ="""

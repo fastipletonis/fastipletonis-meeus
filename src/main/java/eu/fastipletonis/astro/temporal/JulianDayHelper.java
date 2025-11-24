@@ -68,6 +68,8 @@ public class JulianDayHelper {
     private static final BigDecimal C2299161 = new BigDecimal(2299161);
     // Format for string conversion in DecimalTime.
     private static final String FMT_DEC_DATETIME = "%d-%d-%f";
+    // Private constructor to prevent instantiation.
+    private JulianDayHelper() {}
 
     /**
      * We cannot rely on the presence of isBefore(), so we use the required
@@ -93,10 +95,10 @@ public class JulianDayHelper {
      * <p>
      * The following fields are checked:
      * <ul>
-     *   <li>YEAR</li>
-     *   <li>MONTH_OF_YEAR</li>
-     *   <li>DAY_OF_MONTH</li>
-     *   <li>NANO_OF_DAY</li>
+     *   <li>{@link java.time.temporal.ChronoField#YEAR}</li>
+     *   <li>{@link java.time.temporal.ChronoField#MONTH_OF_YEAR}</li>
+     *   <li>{@link java.time.temporal.ChronoField#DAY_OF_MONTH}</li>
+     *   <li>{@link java.time.temporal.ChronoField#NANO_OF_DAY}</li>
      * </ul>
      * <p>
      * Both {@link java.time.LocalDateTime} and {@link java.time.ZonedDateTime}
@@ -104,7 +106,9 @@ public class JulianDayHelper {
      * 
      * @see java.time.temporal.TemporalField Information on specific fields.
      * 
-     * @param temporal 
+     * @param temporal the temporal accessor to be checked
+     * 
+     * @return <code>true</code> if all the required fields are supported
      */
     public static boolean isSupported(TemporalAccessor temporal) {
         return temporal.isSupported(YEAR)
@@ -119,10 +123,10 @@ public class JulianDayHelper {
      * <p>
      * The temporal accessor must support the following fields:
      * <ul>
-     *   <li>YEAR</li>
-     *   <li>MONTH_OF_YEAR</li>
-     *   <li>DAY_OF_MONTH</li>
-     *   <li>NANO_OF_DAY</li>
+     *   <li>{@link java.time.temporal.ChronoField#YEAR}</li>
+     *   <li>{@link java.time.temporal.ChronoField#MONTH_OF_YEAR}</li>
+     *   <li>{@link java.time.temporal.ChronoField#DAY_OF_MONTH}</li>
+     *   <li>{@link java.time.temporal.ChronoField#NANO_OF_DAY}</li>
      * </ul>
      * <p>
      * Both {@link java.time.LocalDateTime} and {@link java.time.ZonedDateTime}
@@ -153,16 +157,17 @@ public class JulianDayHelper {
      * <p>
      * The temporal accessor must support the following fields:
      * <ul>
-     *   <li>YEAR</li>
-     *   <li>MONTH_OF_YEAR</li>
-     *   <li>DAY_OF_MONTH</li>
-     *   <li>NANO_OF_DAY</li>
+     *   <li>{@link java.time.temporal.ChronoField#YEAR}</li>
+     *   <li>{@link java.time.temporal.ChronoField#MONTH_OF_YEAR}</li>
+     *   <li>{@link java.time.temporal.ChronoField#DAY_OF_MONTH}</li>
+     *   <li>{@link java.time.temporal.ChronoField#NANO_OF_DAY}</li>
      * </ul>
      * <p>
      * Both {@link java.time.LocalDateTime} and {@link java.time.ZonedDateTime}
      * satisfy these prerequisites.
      * 
      * @param temporal the temporal accessor
+     * 
      * @return the Julian Day as a value of type double
      */
     public static double getDoubleFrom(TemporalAccessor temporal) {
@@ -190,6 +195,7 @@ public class JulianDayHelper {
      * @param e E parameter
      * @param c C parameter
      * @param dayTime decimal day-time
+     * 
      * @return a string representing the date-time
      */
     private static String computeDecimalDateTime(int e, int c, double day) {
