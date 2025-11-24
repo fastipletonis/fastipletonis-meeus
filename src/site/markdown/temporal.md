@@ -40,3 +40,15 @@ convert them in the JDK `LocalDateTime` object:
   // Check the API reference for details on the accepted format.
   LocalDateTime dt = DecimalTime.parseDateTime(sputnikLaunch); // 1957-10-04T19:26:24
 ```
+
+Please note that a decimal time of `0` indicates midnight, not noon.
+
+The methods to get the decimal time from a temporal accessor can also be
+accessed through queries:
+
+```java
+  LocalTime sputnikLaunch = LocalTime.parse("19:26:24");
+
+  // Queries.HP_DECIMAL_TIME can be used for retrieving a BigDecimal.
+  double t = sputnikLaunch.query(Queries.DECIMAL_TIME); // 0.81
+```
