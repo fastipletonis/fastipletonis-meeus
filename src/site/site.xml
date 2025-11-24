@@ -6,7 +6,7 @@
     </skin>
     <bannerLeft>
         <name>Fasti Pletonis</name>
-        <src>images/pletho-rgb-128x128.png</src>
+        <src>images/pletho-rgb-64x64.png</src>
         <href>https://github.io/fastipletonis/</href>
     </bannerLeft>
     <body>
@@ -17,7 +17,7 @@
         <menu name="API usage">
             <item name="Temporal" href="temporal.html" />
             <item />
-            <item name="API reference" href="apidocs/index.html" />
+            <item name="API reference" href="apidocs/index.html" target="_blank" />
         </menu>
     </body>
 </project>

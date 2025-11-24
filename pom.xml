@@ -31,14 +31,12 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.12.0</version>
         <configuration>
-        <!--
-          <additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
-          <additionalOptions>-Xdoclint:all -Xdoclint:-missing</additionalOptions>
-          <additionalJOptions>
-            <additionalJOption>-Xdoclint:all</additionalJOption>
-            <additionalJOption>-Xdoclint:-missing</additionalJOption>
-          </additionalJOptions>
-        -->
+          <addStylesheets>
+            <addStylesheet>resources/custom-stylesheet.css</addStylesheet>
+          </addStylesheets>
+          <bottom>
+            <![CDATA[Copyright © 2025 Marco Confalonieri.]]>
+          </bottom>
         </configuration>
       </plugin>
     </plugins>
