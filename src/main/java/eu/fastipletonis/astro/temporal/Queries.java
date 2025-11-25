@@ -61,7 +61,8 @@ public class Queries {
 
     /**
      * Query for returning the decimal time as a double. Returns null if the
-     * temporal object does not support the field {@link #NANO_OF_DAY}.
+     * temporal object does not support the field
+     * {@link java.time.temporal.ChronoField#NANO_OF_DAY}.
      */
     public static final TemporalQuery<Double> DECIMAL_TIME = (temporal) -> {
         if (temporal.isSupported(NANO_OF_DAY)) {
@@ -71,7 +72,8 @@ public class Queries {
 
     /**
      * Query for returning the decimal time as a BigDecimal. Returns null if
-     * the temporal object does not support the field {@link #NANO_OF_DAY}.
+     * the temporal object does not support the field
+     * {@link java.time.temporal.ChronoField#NANO_OF_DAY}.
      */
     public static final TemporalQuery<BigDecimal> HP_DECIMAL_TIME = (temporal) -> {
         if (temporal.isSupported(NANO_OF_DAY)) {

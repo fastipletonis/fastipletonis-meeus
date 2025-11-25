@@ -12,6 +12,11 @@
   <name>Astronomical calculations library</name>
   <url>https://fastipletonis.github.io/fastipletonis-astro/</url>
 
+  <organization>
+    <name>Marco Confalonieri</name>
+    <url>https://github.com/fastipletonis/</url>
+  </organization>
+
   <licenses>
     <license>
       <name>GNU General Public License v3</name>
@@ -34,9 +39,6 @@
           <addStylesheets>
             <addStylesheet>resources/custom-stylesheet.css</addStylesheet>
           </addStylesheets>
-          <bottom>
-            <![CDATA[Copyright © 2025 Marco Confalonieri.]]>
-          </bottom>
         </configuration>
       </plugin>
     </plugins>
@@ -99,19 +101,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.12.0</version>
-        <configuration>
-        <!--
-          <additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
-          <additionalOptions>-Xdoclint:all -Xdoclint:-missing</additionalOptions>
-          <additionalJOptions>
-            <additionalJOption>-Xdoclint:all</additionalJOption>
-            <additionalJOption>-Xdoclint:-missing</additionalJOption>
-          </additionalJOptions>
-        -->
-        </configuration>
       </plugin>
-
     </plugins>
     <pluginManagement>
       <plugins>
@@ -158,6 +148,11 @@
         <plugin>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.12.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.12</version>
         </plugin>
       </plugins>
     </pluginManagement>
