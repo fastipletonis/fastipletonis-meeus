@@ -12,6 +12,11 @@
   <name>Astronomical calculations library</name>
   <url>https://fastipletonis.github.io/fastipletonis-astro/</url>
 
+  <organization>
+    <name>Marco Confalonieri</name>
+    <url>https://github.com/fastipletonis/</url>
+  </organization>
+
   <licenses>
     <license>
       <name>GNU General Public License v3</name>
@@ -24,6 +29,20 @@
     <maven.compiler.release>25</maven.compiler.release>
   </properties>
 
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.12.0</version>
+        <configuration>
+          <addStylesheets>
+            <addStylesheet>resources/custom-stylesheet.css</addStylesheet>
+          </addStylesheets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -49,14 +68,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>eu.fastipletonis.astro.App</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -86,6 +97,10 @@
           <scmBranch>gh-pages</scmBranch>
           <encoding>UTF-8</encoding>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
       </plugin>
     </plugins>
     <pluginManagement>
@@ -129,6 +144,15 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.9.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.12.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.12</version>
         </plugin>
       </plugins>
     </pluginManagement>

@@ -21,3 +21,16 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 GITHUB_ACTOR: ${{ github.actor }}
+    # Documentation workflow.
+    doc:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out sources
+              uses: actions/checkout@v6
+            - name: Setup Java JDK
+              uses: actions/setup-java@v5.0.0
+              with:
+                  java-version: 25
+                  distribution: temurin
+            - name: Update the website
+              run: mvn clean site site:stage scm-publish:publish-scm -B

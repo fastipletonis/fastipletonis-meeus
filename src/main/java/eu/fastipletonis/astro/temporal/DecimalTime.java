@@ -49,11 +49,17 @@ public class DecimalTime {
     private static final double NANOS_PER_DAY_D = NANOS_PER_DAY_BD.doubleValue();
     // Regular expression for checking input
     private static final Pattern FMT_DECIMAL_DATETIME = Pattern.compile("([+\\-]?[0-9]{1,4})-([01]?[0-9])-([0-3]?[0-9])[.,]([0-9]+)");
+    // Private constructor to prevent instantiation.
+    private DecimalTime() {}
+
     /**
      * Returns a decimal time from a temporal accessor object as a double
      * value.
+     * <p>
+     * The temporal accessor must support the field
+     * {@link java.time.temporal.ChronoField#NANO_OF_DAY}
      * 
-     * @param temporal temporal accessor that supports NANO_OF_DAY
+     * @param temporal temporal accessor to use
      * 
      * @return a double value representing the decimal time.
      */
@@ -65,8 +71,11 @@ public class DecimalTime {
     /**
      * Returns a decimal time from a temporal accessor object as a BigDecimal
      * value.
+     * <p>
+     * The temporal accessor must support the field
+     * {@link java.time.temporal.ChronoField#NANO_OF_DAY}
      * 
-     * @param temporal temporal accessor that supports NANO_OF_DAY
+     * @param temporal temporal accessor to use
      * 
      * @return a BigDecimal value representing the decimal time.
      */
@@ -110,9 +119,13 @@ public class DecimalTime {
      * It is possible to use negative years. Please note that the
      * floating-point part is mandatory, so for example to indicate the
      * midnight of November 1<sup>st</sup>, 2000, the correct format would
-     * be: <code>2000-11-01.0</code>, or even <code>2000-11-1.0</code>. 
+     * be: <code>2000-11-01.0</code>, or even <code>2000-11-1.0</code>.
+     * <p>
+     * Both "." and "," are accepted as separators.
      * 
      * @param text the string to parse.
+     * 
+     * @return a LocalDateTime object representing the given time
      */
     public static LocalDateTime parseDateTime(CharSequence text) {
         final Matcher m = FMT_DECIMAL_DATETIME.matcher(text);

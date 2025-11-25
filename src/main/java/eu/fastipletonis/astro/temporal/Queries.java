@@ -18,6 +18,8 @@
  */
 package eu.fastipletonis.astro.temporal;
 
+import static java.time.temporal.ChronoField.NANO_OF_DAY;
+
 import java.math.BigDecimal;
 import java.time.temporal.TemporalQuery;
 
@@ -25,13 +27,16 @@ import java.time.temporal.TemporalQuery;
  * Temporal queries used for retrieving time.
  */
 public class Queries {
-
-    // Prevent instantiation
+    // Private constructor to prevent instantiation
     private Queries() {}
 
     /**
      * Query for returning the Astronomical Julian Day as a double. Returns
      * null if the temporal object does not support Julian Days.
+     * <p>
+     * More information about the fields that must be supportd by the
+     * TemporalAccessor is available in the documenttion for
+     * {@link JulianDayHelper#isSupported(java.time.temporal.TemporalAccessor)}.
      */
     public static final TemporalQuery<Double> JULIAN_DAY = (temporal) -> {
         if (JulianDayHelper.isSupported(temporal)) {
@@ -43,10 +48,36 @@ public class Queries {
      * Query for returning the Astronomical Julian Day as a high-precision
      * BigDecimal. Returns null if the temporal object does not support Julian
      * Days.
+     * <p>
+     * More information about the fields that must be supportd by the
+     * TemporalAccessor is available in the documenttion for
+     * {@link JulianDayHelper#isSupported(java.time.temporal.TemporalAccessor)}.
      */
     public static final TemporalQuery<BigDecimal> HP_JULIAN_DAY = (temporal) -> {
         if (JulianDayHelper.isSupported(temporal)) {
             return JulianDayHelper.getBigDecimalFrom(temporal);
+        } else return null;
+    };
+
+    /**
+     * Query for returning the decimal time as a double. Returns null if the
+     * temporal object does not support the field
+     * {@link java.time.temporal.ChronoField#NANO_OF_DAY}.
+     */
+    public static final TemporalQuery<Double> DECIMAL_TIME = (temporal) -> {
+        if (temporal.isSupported(NANO_OF_DAY)) {
+            return DecimalTime.asDouble(temporal);
+        } else return null;
+    };
+
+    /**
+     * Query for returning the decimal time as a BigDecimal. Returns null if
+     * the temporal object does not support the field
+     * {@link java.time.temporal.ChronoField#NANO_OF_DAY}.
+     */
+    public static final TemporalQuery<BigDecimal> HP_DECIMAL_TIME = (temporal) -> {
+        if (temporal.isSupported(NANO_OF_DAY)) {
+            return DecimalTime.asBigDecimal(temporal);
         } else return null;
     };
 }

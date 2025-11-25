@@ -7,3 +7,9 @@ second edition.
 ⚠️ **This is an initial version.** ⚠️
 
 Expect bugs and incomplete features.
+
+## Quickstart
+
+Please check the
+[GitHub repository](https://github.com/fastipletonis/fastipletonis-astro) for
+an updated quick start guide on this library.
