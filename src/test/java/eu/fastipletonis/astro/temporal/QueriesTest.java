@@ -1,0 +1,107 @@
+/*
+ *   Test suite for Queries.
+ *
+ *   Copyright (C) 2025 Marco Confalonieri <marco at marcoconfalonieri.it>
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package eu.fastipletonis.astro.temporal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAccessor;
+import java.time.temporal.TemporalQuery;
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.jupiter.api.Named;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.FieldSource;
+
+/// Test suite for Queries.
+public class QueriesTest {
+    /// Test arguments for queries that return results as `Double`.
+    static final Collection<Arguments> queriesArgs_double = Arrays.asList(
+            arguments(
+                Named.of("Queries.JULIAN_DAY", Queries.JULIAN_DAY),
+                Double.valueOf(2436116.31d),
+                LocalDateTime.of(1957, 10, 4, 19, 26, 24)),
+            arguments(
+                Named.of("Queries.JULIAN_DAY", Queries.JULIAN_DAY),
+                null,
+                LocalTime.of(19, 26, 24)),
+            arguments(
+                Named.of("Queries.DECIMAL_TIME", Queries.DECIMAL_TIME),
+                Double.valueOf(0.81d),
+                LocalTime.of(19, 26, 24)),
+            arguments(
+                Named.of("Queries.DECIMAL_TIME", Queries.DECIMAL_TIME),
+                null,
+                LocalDate.of(1957, 10, 4))
+    );
+    /// Test arguments for queries that return results as `BigDecimal`.
+    static final Collection<Arguments> queriesArgs_BigDecimal = Arrays.asList(
+            arguments(
+                Named.of("Queries.HP_JULIAN_DAY", Queries.HP_JULIAN_DAY),
+                new BigDecimal("2436116.31"),
+                LocalDateTime.of(1957, 10, 4, 19, 26, 24)),
+            arguments(
+                Named.of("Queries.HP_JULIAN_DAY", Queries.HP_JULIAN_DAY),
+                null,
+                LocalTime.of(19, 26, 24)),
+            arguments(
+                Named.of("Queries.HP_DECIMAL_TIME", Queries.HP_DECIMAL_TIME),
+                new BigDecimal("0.81"),
+                LocalTime.of(19, 26, 24)),
+            arguments(
+                Named.of("Queries.HP_DECIMAL_TIME", Queries.HP_DECIMAL_TIME),
+                null,
+                LocalDate.of(1957, 10, 4))
+    );
+
+    /// Constructor.
+    QueriesTest() {}
+
+    @ParameterizedTest
+    @FieldSource("queriesArgs_double")
+    void testQueries_double(TemporalQuery<Double> query, Double expected, TemporalAccessor input) {
+        final Double actual = input.query(query);
+        if (expected == null)
+            assertNull(actual);
+        else {
+            assertNotNull(actual);
+            assertEquals(expected, actual, 0.0001);
+        }
+    }
+    
+    @ParameterizedTest
+    @FieldSource("queriesArgs_BigDecimal")
+    void testQueries_BigDecimal(TemporalQuery<BigDecimal> query, BigDecimal expected, TemporalAccessor input) {
+        final BigDecimal actual = input.query(query);
+        if (expected == null)
+            assertNull(actual);
+        else {
+            assertNotNull(actual);
+            assertEquals(expected, actual);
+        }
+    }
+}

@@ -27,13 +27,10 @@ import java.time.LocalTime;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-/**
- * Test suite for DecimalTime.
- */
+/// Test suite for DecimalTime.
 public class DecimalTimeTest {
-    /**
-     * Constructor.
-     */
+
+    /// Constructor.
     DecimalTimeTest() {}
 
     @ParameterizedTest
