@@ -46,7 +46,7 @@ import java.time.temporal.TemporalAccessor;
  */
 public class JulianDayHelper {
     // Math context for the required calculations.
-    private static final MathContext MC = new MathContext(20, RoundingMode.DOWN);
+    private static final MathContext MC = new MathContext(30, RoundingMode.DOWN);
     // Constants related to the Julian calendar cut-off.
     private static final int CUTOFF_YEAR = 1582;
     private static final int CUTOFF_MONTH = 10;
