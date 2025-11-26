@@ -23,7 +23,11 @@ or using the queries defined in the `Queries`class:
   ZonedDateTime sputnikLaunch = ZonedDateTime.parse("1957-10-04T19:26:24Z");
 
   // Alternatively, we can use Queries.HP_JULIAN_DAY for a higher precision.
-  double jd = sputnikLaunch.query(Queries.JULIAN_DAY); // 2436116.31
+  // In this case a BigDecimal will be returned.
+  // Please note that we use "Double", not "double", as the query will first
+  // check if the temporal accessor can be used to retrieve a Julian day and
+  // return null if it is not possible.
+  Double jd = sputnikLaunch.query(Queries.JULIAN_DAY); // 2436116.31
 ```
 
 ## Decimal Time
@@ -50,5 +54,8 @@ accessed through queries:
   LocalTime sputnikLaunch = LocalTime.parse("19:26:24");
 
   // Queries.HP_DECIMAL_TIME can be used for retrieving a BigDecimal.
+  // Please note that we use "Double", not "double", as the query will first
+  // check if the temporal accessor can be used to retrieve a decimal time and
+  // return null if it is not possible.
   double t = sputnikLaunch.query(Queries.DECIMAL_TIME); // 0.81
 ```
